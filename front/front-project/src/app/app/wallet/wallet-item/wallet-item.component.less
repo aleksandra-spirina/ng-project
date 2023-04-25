@@ -1,0 +1,60 @@
+:host {
+	--tui-padding: 1.25rem;
+}
+
+[tuiButton][data-size='xs'] {
+	--tui-padding: 0.5rem;
+}
+
+.container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+	gap: 10px;
+}
+
+.container__main-inf {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.container:hover {
+  background-color: #eeeeee;
+}
+
+.container__additional-inf {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.container__additional-fields span {
+	display: inline-block;
+}
+
+.container__additional-fields {
+	display: flex;
+	flex-direction: column;
+}
+
+.container__date {
+	font-size: 12px;
+}
+
+.container__button {
+	align-self: flex-end;
+}
+
+.close {
+	display: inline-block;
+	margin: 0 15px;
+  cursor: pointer;
+  color: red;
+}
+
+.container__header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}

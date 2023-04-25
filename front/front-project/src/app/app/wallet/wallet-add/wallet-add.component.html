@@ -1,0 +1,38 @@
+<form class="form" [formGroup]="form">
+	<div class="tui-form__row">
+		<tui-input tuiTextfieldSize="s" formControlName="title" value="Слово">
+			Название
+			<input tuiTextfield placeholder="Слово"/>
+		</tui-input>
+		<div *ngIf="title!.invalid && (title!.touched || title!.dirty)" class="form__error error">
+			<span *ngIf="title!.errors?.['required']" class="error__text">Поле обязательно для заполнения</span>
+			<span *ngIf="title!.errors?.['minlength']" class="error__text">Минимальная длина - 3 символа</span>
+			<span *ngIf="title!.errors?.['maxlength']" class="error__text">Максимальная длина - 80 символов</span>
+		</div>
+	</div>
+
+	<div class="tui-form__row">
+		<tui-input tuiTextfieldSize="s" formControlName="price">
+			Стоимость
+		</tui-input>
+		<div *ngIf="price!.invalid && (price!.touched || price!.dirty)" class="form__error error">
+			<span *ngIf="price!.errors?.['required']" class="error__text">Поле обязательно для заполнения</span>
+			<span *ngIf="price!.errors?.['min']" class="error__text">Минимальное значение - 10</span>
+			<span *ngIf="price!.errors?.['max']" class="error__text">Максимальное значение - 10000</span>
+			<span *ngIf="price!.errors?.['pattern']" class="error__text">Разрешены лишь цифры</span>
+		</div>
+	</div>
+
+	<div class="tui-form__row">
+		<tui-text-area formControlName="comment">Комментарий...</tui-text-area>
+	</div>
+
+	<div class="tui-form__row buttons">
+		<button *ngIf="addButtonMode" [disabled]="form.invalid" tuiButton class="tui-form__button" size="s" type="submit" (click)="submitAdd()">
+			Добавить
+		</button>
+		<button *ngIf="!addButtonMode" [disabled]="form.invalid" tuiButton class="tui-form__button" size="s" type="submit" (click)="submitEdit()">
+			Сохранить
+		</button>
+	</div>
+</form>

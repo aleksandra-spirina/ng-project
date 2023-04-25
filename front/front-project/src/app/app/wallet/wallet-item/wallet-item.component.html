@@ -1,0 +1,20 @@
+<div class="container" (click)="onSwitch($event)">
+	<div class="container__header">
+		<span class="close" (click)="onDelete()">X</span>
+	</div>
+	<div class="container__main-inf">
+		{{ purchase.title }}
+
+		<tui-badge class="support-1" status="success" [value]="purchase.price | price" [hoverable]="true"></tui-badge>
+	</div>
+	<div *ngIf="purchase.active" class="container__additional-inf">
+		<div class="container__additional-fields">
+			<span *ngIf="purchase.comment" class="container__comment"><b>Комментарий: </b>{{ purchase.comment }}</span>
+		</div>
+		<div class="container__button">
+			<button tuiButton class="tui-form__button button" size="xs" type="button" (click)="onEdit()">
+				Редактировать
+			</button>
+		</div>
+	</div>
+</div>
