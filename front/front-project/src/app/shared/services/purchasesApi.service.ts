@@ -2,9 +2,9 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { IPurchasesApiService } from "../interfaces/IPurchasesApiService";
 import { Purchase } from "../interfaces/Purchase";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 
-const host = 'http://localhost:3000';
+const host = 'http://tfs';
 
 @Injectable()
 export class PurchasesApiService implements IPurchasesApiService {
@@ -19,11 +19,11 @@ export class PurchasesApiService implements IPurchasesApiService {
 	}
 
 	edit(id: string, purchase: Purchase): Observable<void> {
-		console.log('id: ', id);
 		return this.httpClient.put<void>(`${host}/${id}`, purchase);
 	}
 
-	delete(id: string): Observable<void> {
-		return this.httpClient.delete<void>(`${host}/${id}`);
+	delete(id: string): Observable<any> {
+		let params = new HttpParams().set('id', id);
+		return this.httpClient.delete<void>(`${host}/${id}`, { params: params });
 	}
 }

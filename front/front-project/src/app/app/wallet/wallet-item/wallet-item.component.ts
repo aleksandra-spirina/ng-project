@@ -21,11 +21,19 @@ export class WalletItemComponent {
 
 	constructor() { }
 
-	onSwitch(event: Event): void {
+	onPurchase(event: Event): void {
 		let targetElement = (event.target as HTMLElement);
-		if (!(targetElement.classList.contains('t-wrapper') || targetElement.classList.contains('t-content'))) {
-			this.switchClick.emit(this.purchase);
+		if (targetElement.classList.contains('t-wrapper') || targetElement.classList.contains('t-content')) {
+			this.onEdit();
+		} else if (targetElement.classList.contains('close')) {
+			this.onClose();
+		} else {
+			this.onSwitch();
 		}
+	}
+
+	onSwitch(): void {
+		this.switchClick.emit(this.purchase);
 	}
 
 	onEdit(): void {
@@ -33,7 +41,7 @@ export class WalletItemComponent {
 		this.purchase.active = true;
 	}
 
-	onDelete() {
-    this.deleteClick.next(this.purchase);
-  }
+	onClose() {
+		this.deleteClick.next(this.purchase);
+	}
 }

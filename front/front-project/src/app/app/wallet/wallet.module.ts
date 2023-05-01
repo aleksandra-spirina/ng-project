@@ -13,6 +13,9 @@ import { IPurchasesApiServiceToken } from '../../shared/interfaces/IPurchasesApi
 import { PurchasesApiService } from '../../shared/services/purchasesApi.service';
 import { PricePipe } from 'src/app/pipes/price.pipe';
 
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ParamInterceptor } from 'src/app/interceptor/api.interceptor';
+
 @NgModule({
 	declarations: [
 		WalletComponent,
@@ -32,8 +35,18 @@ import { PricePipe } from 'src/app/pipes/price.pipe';
 		TuiTextfieldControllerModule,
 		TuiButtonModule,
 		TuiInputDateModule,
-		TuiTextAreaModule
+		TuiTextAreaModule,
+		HttpClientModule
 	],
-	providers: [{provide: IPurchasesApiServiceToken, useClass: PurchasesApiService}]
+	providers: [
+		{
+			provide: IPurchasesApiServiceToken,
+			useClass: PurchasesApiService
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ParamInterceptor,
+			multi: true
+		}]
 })
 export class WalletModule { }

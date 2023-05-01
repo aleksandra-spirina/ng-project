@@ -1,6 +1,6 @@
-<div class="container" (click)="onSwitch($event)">
+<div class="container" (click)="onPurchase($event)">
 	<div class="container__header">
-		<span class="close" (click)="onDelete()">X</span>
+		<span class="close">X</span>
 	</div>
 	<div class="container__main-inf">
 		{{ purchase.title }}
@@ -12,7 +12,7 @@
 			<span *ngIf="purchase.comment" class="container__comment"><b>Комментарий: </b>{{ purchase.comment }}</span>
 		</div>
 		<div class="container__button">
-			<button tuiButton class="tui-form__button button" size="xs" type="button" (click)="onEdit()">
+			<button tuiButton class="tui-form__button button" size="xs" type="button">
 				Редактировать
 			</button>
 		</div>

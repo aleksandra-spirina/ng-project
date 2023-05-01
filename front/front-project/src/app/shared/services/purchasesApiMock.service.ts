@@ -5,6 +5,14 @@ import { Injectable } from "@angular/core";
 
 @Injectable({providedIn: 'root'})
 export class PurchasesApiMockService implements IPurchasesApiService {
+	edit(id: string, purchase: Purchase): Observable<void> {
+		throw new Error("Method not implemented.");
+	}
+
+	delete(id: string): Observable<void> {
+		throw new Error("Method not implemented.");
+	}
+	
 	add(purchase: Purchase): Observable<void> {
 		return of();
 	}
@@ -38,9 +46,5 @@ export class PurchasesApiMockService implements IPurchasesApiService {
 				}
 			]
 		);
-	}
-	
-	change(purchase: Purchase): Observable<void> {
-		return of();
 	}
 }
